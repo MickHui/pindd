@@ -1,10 +1,24 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
+//一级路由
 import Home from '@/pages/Home/Home'
 import Recommend from '@/pages/Recommend/Recommend'
 import Search from '@/pages/Search/Search'
 import Chart from '@/pages/Chart/Chart'
 import Person from '@/pages/Person/Person'
+
+
+//二级路由
+import Hot from '@/pages/Home/children/Hot/Hot'
+import Dress from '@/pages/Home/children/Dress'
+import Goods from '@/pages/Home/children/Goods'
+import Food from '@/pages/Home/children/Food'
+import Xiebao from '@/pages/Home/children/Xiebao'
+import Neiyi from '@/pages/Home/children/Neiyi'
+import Cloth from '@/pages/Home/children/Cloth'
+import Baby from '@/pages/Home/children/Baby'
+import Electrical from '@/pages/Home/children/Electrical'
 
 Vue.use(Router)
 
@@ -13,7 +27,19 @@ export default new Router({
     {
       path: '/Home',
       name: 'Home',
-      component: Home
+      component: Home,
+      children:[
+           {path:'hot',component:Hot },
+           {path:'dress',component:Dress },
+           {path:'goods',component:Goods },
+           {path:'food',component:Food },
+           {path:'xiebao',component:Xiebao },
+           {path:'neiyi',component:Neiyi },
+           {path:'cloth',component:Cloth },
+           {path:'baby',component:Baby },
+           {path:'electrical',component:Electrical },
+           {path:'/home',redirect:'/home/hot' },
+      ]
     },
      {
       path: '/search',
