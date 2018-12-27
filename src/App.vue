@@ -1,7 +1,9 @@
 <template>
   <div id="app">
+  	<keep-alive includes="Detail">
   <router-view></router-view>
-   <tab-bar></tab-bar>
+  </keep-alive>
+   <tab-bar v-show="$route.meta.showBottomTabBar"></tab-bar>
   </div>
 </template>
 
@@ -9,6 +11,9 @@
 import tabBar from './components/tabBar/tabBar'
 export default {
   name: 'App',
+  created(){
+  	this.$store.dispatch('reqUserInfo')
+  },
   components:{
   	tabBar
   }

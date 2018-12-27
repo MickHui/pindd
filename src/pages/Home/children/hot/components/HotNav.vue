@@ -6,73 +6,11 @@
           	描述：滚动区
           -->
 		 <div class="hotnav-container">
-		 	   <div class="hotnav-wraper">
-		    <div class="hont-items">
-		    	<img src="//t07img.yangkeduo.com/images/2018-05-16/26c916947489c6b2ddd188ecdb54fd8d.png"  />
-		    	<span>限时秒杀</span>
+		 	   <div class="hotnav-wraper" v-if="homenav.length>0">
+		    <div class="hont-items" v-for="(item,index) of homenav":key='index'>
+		    	<img :src="item.iconurl"  />
+		    	<span>{{item.icontitle}}</span>
 		    </div>
-		     <div class="hont-items">
-		    	<img src="//t07img.yangkeduo.com/images/2018-05-16/26c916947489c6b2ddd188ecdb54fd8d.png"  />
-		    	<span>限时秒杀</span>
-		    </div>
-		     <div class="hont-items">
-		    	<img src="//t07img.yangkeduo.com/images/2018-05-16/26c916947489c6b2ddd188ecdb54fd8d.png"  />
-		    	<span>限时秒杀</span>
-		    </div>
-		     <div class="hont-items">
-		    	<img src="//t07img.yangkeduo.com/images/2018-05-16/26c916947489c6b2ddd188ecdb54fd8d.png"  />
-		    	<span>限时秒杀</span>
-		    </div>
-		     <div class="hont-items">
-		    	<img src="//t07img.yangkeduo.com/images/2018-05-16/26c916947489c6b2ddd188ecdb54fd8d.png"  />
-		    	<span>限时秒杀</span>
-		    </div>
-		     <div class="hont-items">
-		    	<img src="//t07img.yangkeduo.com/images/2018-05-16/26c916947489c6b2ddd188ecdb54fd8d.png"  />
-		    	<span>限时秒杀</span>
-		    </div>
-		     <div class="hont-items">
-		    	<img src="//t07img.yangkeduo.com/images/2018-05-16/26c916947489c6b2ddd188ecdb54fd8d.png"  />
-		    	<span>限时秒杀</span>
-		    </div>
-		     <div class="hont-items">
-		    	<img src="//t07img.yangkeduo.com/images/2018-05-16/26c916947489c6b2ddd188ecdb54fd8d.png"  />
-		    	<span>限时秒杀</span>
-		    </div>
-		      <div class="hont-items">
-		    	<img src="//t07img.yangkeduo.com/images/2018-05-16/26c916947489c6b2ddd188ecdb54fd8d.png"  />
-		    	<span>限时秒杀</span>
-		    </div>
-		     <div class="hont-items">
-		    	<img src="//t07img.yangkeduo.com/images/2018-05-16/26c916947489c6b2ddd188ecdb54fd8d.png"  />
-		    	<span>限时秒杀</span>
-		    </div>
-		     <div class="hont-items">
-		    	<img src="//t07img.yangkeduo.com/images/2018-05-16/26c916947489c6b2ddd188ecdb54fd8d.png"  />
-		    	<span>限时秒杀</span>
-		    </div>
-		     <div class="hont-items">
-		    	<img src="//t07img.yangkeduo.com/images/2018-05-16/26c916947489c6b2ddd188ecdb54fd8d.png"  />
-		    	<span>限时秒杀</span>
-		    </div>
-		     <div class="hont-items">
-		    	<img src="//t07img.yangkeduo.com/images/2018-05-16/26c916947489c6b2ddd188ecdb54fd8d.png"  />
-		    	<span>限时秒杀</span>
-		    </div>
-		     <div class="hont-items">
-		    	<img src="//t07img.yangkeduo.com/images/2018-05-16/26c916947489c6b2ddd188ecdb54fd8d.png"  />
-		    	<span>限时秒杀</span>
-		    </div>
-		     <div class="hont-items">
-		    	<img src="//t07img.yangkeduo.com/images/2018-05-16/26c916947489c6b2ddd188ecdb54fd8d.png"  />
-		    	<span>限时秒杀</span>
-		    </div>
-		     <div class="hont-items">
-		    	<img src="//t07img.yangkeduo.com/images/2018-05-16/26c916947489c6b2ddd188ecdb54fd8d.png"  />
-		    	<span>限时秒杀</span>
-		    </div>
-		     <div class="bgscroll">    
-		     </div>
 		 </div>
 		</div>
 		<!-- 作者：524238580@qq.com 时间：2018-12-16  描述：进度条-->
@@ -84,6 +22,7 @@
 </template>
 
 <script>
+	import { mapState } from 'vuex'
 	 export default {
 	 	 name:"HotNav",
 	 	 data () {
@@ -149,7 +88,11 @@
 	 	 	  		width:`${this.scrollWidth}rem`,
 	 	 	  		left:`${this.scrollMove}rem`
 	 	 	  	}
-	 	 	  }
+	 	 	  },
+	 	 	  ...mapState(['homenav']),
+	 	 },
+	 	 mounted(){
+	 	 	this.$store.dispatch('reqHomeNav')
 	 	 }
 	 }
 	

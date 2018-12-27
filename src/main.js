@@ -6,6 +6,12 @@ import router from './router'
 import fastClick from 'fastclick'
 import LyTab from 'ly-tab'
 import store from './store'
+// 配置mint-ui
+import { Actionsheet } from 'mint-ui';
+Vue.component(Actionsheet.name, Actionsheet);
+
+import { DatetimePicker } from 'mint-ui';
+Vue.component(DatetimePicker.name, DatetimePicker);
 
 
 fastClick.attach(document.body)

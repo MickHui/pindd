@@ -4,7 +4,7 @@
 	     	 @click="switchTo('/home')"
 	     	 :class="{on:$route.path.includes('/home')}"
 	     >
-	     	  <span  class="iconfont items-icon" >&#xe630;</span>
+	     	  <span  class="iconfont items-icon" >&#xe7d8;</span>
 	     	  <span class="items-title">首页</span>
 	     </div>
 	      <div class='item'  
@@ -25,8 +25,8 @@
 	      	   @click="switchTo('/chart')"
 	      	   :class="{on:$route.path.includes('/chart')}"
 	      >
-	     	  <span  class="iconfont items-icon">&#xe7dc;</span>
-	     	  <span class="items-title">聊天</span>
+	     	  <span  class="iconfont items-icon">&#xe7d9;</span>
+	     	  <span class="items-title">购物车</span>
 	     </div>
 	      <div class='item'  
 	      	   @click="switchTo('/person')"

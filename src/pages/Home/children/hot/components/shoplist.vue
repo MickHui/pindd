@@ -1,18 +1,17 @@
 <template>
-	<div class="shoplist">
+	<div class="shoplist" v-if="homeshoplist.length>0">
 		   <ul>
-		   	<li class="shoplist-item">
+		   	<li class="shoplist-item" v-for="(item,index) of homeshoplist" :key="index">
 		   		<div class="item-img">
-		   		  <img src="//t00img.yangkeduo.com/goods/images/2018-12-16/7aaa079064e3f17cfcbcf416be4f2ca1.jpeg" />
+		   		  <img :src="item.image_url" />
 		   		</div>
 		   		<div class="item-infor">
-		   			<h4 class="item-infor-title">加绒/不加绒加厚丝绒运动裤女冬季保暖BF风哈伦裤休闲裤卫裤长裤</h4>
+		   			<h4 class="item-infor-title">{{item.goods_name}}</h4>
 		   			<div class="item-infor-detail">
-		   				<span class="item-infor-detail-price">￥26.9</span>
-		   				<span class="item-infor-detail-count">已拼5345件</span>
+		   				<span class="item-infor-detail-price">￥{{item.normal_price / 100}}</span>
+		   				<span class="item-infor-detail-count">{{item.sales_tip}}</span>
 		   				 <span class="item-infor-detail-touxiang">
-		   				 	<img src="../../../../../../static/images/user1.jpg"  />
-		   				 	<img src="../../../../../../static/images/user2.jpg"  />
+		   				 	 <img :src="user.avatar" alt="" v-for="(user, index1) in item.bubble" :key="index1">
 		   				 </span>
 		   				 <button class="item-infor-detail-btn">去拼单></button>
 		   			</div>
@@ -40,8 +39,15 @@
 </template>
 
 <script>
+	import { mapState } from 'vuex'
 	export default {
-		name:"HotShoplist"
+		name:"HotShoplist",
+		mounted () {
+			this.$store.dispatch('reqHomeShopList')
+		},
+		computed:{
+			...mapState(['homeshoplist'])
+		}
 	}
 </script>
 

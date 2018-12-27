@@ -7,6 +7,7 @@ import Recommend from '@/pages/Recommend/Recommend'
 import Search from '@/pages/Search/Search'
 import Chart from '@/pages/Chart/Chart'
 import Person from '@/pages/Person/Person'
+import Login from '@/pages/Login/Login'
 
 
 //二级路由
@@ -19,6 +20,9 @@ import Neiyi from '@/pages/Home/children/Neiyi'
 import Cloth from '@/pages/Home/children/Cloth'
 import Baby from '@/pages/Home/children/Baby'
 import Electrical from '@/pages/Home/children/Electrical'
+import MeSetting from '@/pages/Person/components/MeSetting'
+import Detail from '@/pages/Person/components/Detail'
+
 
 Vue.use(Router)
 
@@ -29,7 +33,7 @@ export default new Router({
       name: 'Home',
       component: Home,
       children:[
-           {path:'hot',component:Hot },
+           {path:'hot',component:Hot ,meta:{showBottomTabBar:true}},
            {path:'dress',component:Dress },
            {path:'goods',component:Goods },
            {path:'food',component:Food },
@@ -44,26 +48,45 @@ export default new Router({
      {
       path: '/search',
       name: 'Search',
-      component:Search
+      component:Search,
+      meta:{showBottomTabBar:true}
     },
      {
       path: '/Recommend',
       name: 'Recommend',
-      component: Recommend
+      component: Recommend,
+      meta:{showBottomTabBar:true}
     },
      {
       path: '/Person',
       name: 'Person',
-      component: Person
+      component: Person,
+      meta:{showBottomTabBar:true}
     }, 
     {
       path: '/Chart',
       name: 'Chart',
-      component: Chart
+      component: Chart,
+      meta:{showBottomTabBar:true}
     },
-       {
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/setting',
+      name: 'MeSetting',
+      component: MeSetting
+    },
+    {
+      path: '/detail',
+      name: 'Detail',
+      component: Detail
+    },
+    {
       path: '/',
-      redirect:'/home'
+      redirect:'/home',
     }
   ]
 })

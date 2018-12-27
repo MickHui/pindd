@@ -50,7 +50,6 @@
 		},
 		mounted () {
 			this.$store.dispatch('reqHomeCasual')
-			
 		}
 	}
 </script>
